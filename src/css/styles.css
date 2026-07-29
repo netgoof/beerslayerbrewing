@@ -1,0 +1,192 @@
+/* ==========================================================================
+   Beerslayer Brewing Co. — landing page
+   Palette: forged iron & torchlight
+   -------------------------------------------------------------------------
+   --void       #0B0A08   base background, warm near-black
+   --panel      #16130F   slightly lifted surface
+   --iron       #3A3530   hairlines, dividers, chainmail grey-brown
+   --bone       #E8DFC8   primary text, parchment/bone
+   --rust       #8C3B23   primary accent, oxidized blade
+   --gold       #B9902E   secondary accent, aged brass, used sparingly
+   ========================================================================== */
+
+:root {
+  --void: #0B0A08;
+  --panel: #16130F;
+  --iron: #3A3530;
+  --bone: #E8DFC8;
+  --rust: #8C3B23;
+  --gold: #B9902E;
+
+  --font-display: 'Cinzel', 'Times New Roman', serif;
+  --font-body: 'Crimson Pro', Georgia, serif;
+  --font-label: 'Oswald', 'Arial Narrow', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse 900px 600px at 50% -10%, rgba(140, 59, 35, 0.16), transparent 60%),
+    repeating-linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.012) 0px,
+      rgba(255, 255, 255, 0.012) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    var(--void);
+  color: var(--bone);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6vh 1.5rem 3rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* subtle film-grain / etched-paper texture overlay */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+.hero {
+  position: relative;
+  z-index: 2;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 2.25rem;
+  font-weight: 600;
+}
+
+.badge-wrap {
+  position: relative;
+  width: min(62vw, 340px);
+  margin-bottom: 1.75rem;
+}
+
+.badge-glow {
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(140, 59, 35, 0.45) 0%, rgba(140, 59, 35, 0.12) 45%, transparent 72%);
+  filter: blur(6px);
+  animation: flicker 5s ease-in-out infinite;
+  z-index: -1;
+}
+
+.badge {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  38%      { opacity: 1;    transform: scale(1.03); }
+  52%      { opacity: 0.78; transform: scale(0.99); }
+  75%      { opacity: 0.95; transform: scale(1.015); }
+}
+
+.tagline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 3.4vw, 1.9rem);
+  letter-spacing: 0.01em;
+  margin: 0 0 0.85rem;
+  color: var(--bone);
+}
+
+.subcopy {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(232, 223, 200, 0.72);
+  max-width: 32rem;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+.divider {
+  width: 200px;
+  max-width: 60vw;
+  margin: 2.4rem 0 1.6rem;
+  color: var(--iron);
+}
+
+.divider svg {
+  width: 100%;
+  height: 12px;
+  stroke: var(--iron);
+  fill: var(--iron);
+  stroke-width: 1;
+}
+
+.coming-soon {
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin: 0;
+  font-weight: 600;
+}
+
+.site-footer {
+  position: relative;
+  z-index: 2;
+  margin-top: 3rem;
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: rgba(232, 223, 200, 0.35);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* focus visibility, in case interactive elements are added later */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge-glow {
+    animation: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .subcopy {
+    font-size: 0.98rem;
+  }
+}
