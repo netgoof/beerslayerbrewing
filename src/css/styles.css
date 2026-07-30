@@ -158,6 +158,54 @@ body {
   font-weight: 600;
 }
 
+.beer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.75rem;
+  margin: 0.5rem 0 0.5rem;
+}
+
+.beer-card {
+  margin: 0;
+  width: min(42vw, 220px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.beer-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 1px solid var(--iron);
+  background: var(--panel);
+}
+
+.beer-card figcaption {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.beer-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--bone);
+}
+
+.beer-style {
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
 .site-footer {
   position: relative;
   z-index: 2;
